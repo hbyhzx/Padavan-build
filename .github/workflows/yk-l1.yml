@@ -15,7 +15,7 @@ on:
     types: [started]
 
 env:
-# 上传固件到 Github Releases
+# 上传固件到 Github Releasesa
   UPLOAD_RELEASES: true
   Result: true
 jobs:
