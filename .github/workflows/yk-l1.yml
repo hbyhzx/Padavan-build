@@ -14,10 +14,10 @@ on:
   watch:
     types: [started]
 
- 	env:
-	# 上传固件到 Github Releases
-	  UPLOAD_RELEASES: true
-    Result: true
+env:
+# 上传固件到 Github Releases
+  UPLOAD_RELEASES: true
+  Result: true
 jobs:
   build:
     runs-on: ubuntu-18.04
