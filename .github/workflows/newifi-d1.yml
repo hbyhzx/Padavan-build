@@ -1,5 +1,5 @@
 #修改TNAME: K2P 中的K2P为你需要编译的型号，注意名称要与configs/templates/目录下的名字相同
-name:  yk-l1
+name:  newifi-d1
 
 on: 
   release:
@@ -34,11 +34,7 @@ jobs:
       env:
         KERNEL: 3.4
       run: |
-        if [ $KERNEL = "4.4" ] ; then
-        git clone --depth=1 https://github.com/MeIsReallyBa/padavan-4.4.git /opt/rt-n56u
-        else
         git clone --depth=1 https://github.com/hbyhzx/rt-n56u.git /opt/rt-n56u
-        fi
         cd /opt/rt-n56u/toolchain-mipsel
         sh dl_toolchain.sh
         mkdir -p /opt/images/
@@ -98,7 +94,7 @@ jobs:
         echo "CONFIG_FIRMWARE_INCLUDE_WYY=n" >> .config #网易云解锁
         echo "CONFIG_FIRMWARE_INCLUDE_WYYBIN=n" >> .config #网易云解锁GO版本执行文件（4M多）注意固件超大小,不集成会自动下载
         echo "CONFIG_FIRMWARE_INCLUDE_ZEROTIER=n" >> .config #zerotier ~1.3M
-        echo "CONFIG_FIRMWARE_INCLUDE_HTOP=n" >> .config
+        echo "CONFIG_FIRMWARE_INCLUDE_HTOP=y" >> .config
         #########################################################################################
         #自定义添加其它功能请参考源码configs/templates/目录下的config文件。按照上面的格式添加即可
         #格式如下：
@@ -113,7 +109,7 @@ jobs:
       uses: actions/upload-artifact@master
       if: always()
       with:
-        name: Padavan-packages-youku-l1
+        name: Padavan-packages-newifi-d1
         path: /opt/images
     
     - name: Upload Firmware to Github Release
